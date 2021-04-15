@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(180, 180, 180);
+}
+
+#div0 {
+    background-color: rgb(163, 121, 121);
+    position: relative;
+    width: 450px;
+    height: 500px;
+    
+}
+
+#div1 {
+    background-color: rgb(120, 151, 151);
+    position: relative;
+    width: 450px;
+    height: 500px;
+    margin-left: 550px;
+    margin-top: -500px;
+}
+
+span {
+    background-color: black;
+    height: 100px;
+    width: 200px;
+    position: fixed;
+}
