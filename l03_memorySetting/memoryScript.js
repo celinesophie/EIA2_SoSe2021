@@ -7,6 +7,7 @@ var memoryGameL03;
     let wonPairs = 0;
     let startButton;
     let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y"];
+    //array for comparing cards
     let cardArray = [];
     // let start: number = new Date().getTime();
     // let end: number = new Date().getTime;
@@ -15,7 +16,7 @@ var memoryGameL03;
         startButton = document.getElementById("startButton");
         startButton.addEventListener("click", createCards);
     }
-    //cards are created an style is selected
+    //cards are created and style is set
     function createCards(_event) {
         //get formdata
         let formData = new FormData(document.forms[0]);
@@ -29,7 +30,7 @@ var memoryGameL03;
         if (pairNumber) {
             pairs = Number(pairNumber);
         }
-        //make settings div invisible
+        //make settings invisible
         // let settings: HTMLDivElement = <HTMLDivElement>document.querySelector("#settings");
         let gameBoard = document.getElementById("gameBoard");
         gameBoard.innerHTML = " ";
@@ -70,13 +71,12 @@ var memoryGameL03;
     } //createCards end
     //cards are clicked
     function chooseCard(_event) {
-        console.log("chooseCard");
         let clickedCard = _event.target;
         clickedCard.setAttribute("class", "front");
         clickedCard.classList.remove("back");
         turnedCards++;
         cardArray.push(clickedCard);
-        console.log(turnedCards);
+        // console.log(turnedCards);
         if (turnedCards == 2) {
             setTimeout(() => {
                 compareCards();
@@ -85,7 +85,7 @@ var memoryGameL03;
     } //end chooseCards
     //cards are compared
     function compareCards() {
-        console.log("comparing");
+        // console.log("comparing");
         //if match, cards become invisible
         if (cardArray[0].innerHTML == cardArray[1].innerHTML) {
             cardArray[0].setAttribute("class", "isHidden");
@@ -94,7 +94,7 @@ var memoryGameL03;
             cardArray[1].classList.remove("front");
             turnedCards = 0;
             wonPairs++;
-            console.log(turnedCards);
+            cardArray.length = 0;
         }
         else if (cardArray[0].innerHTML != cardArray[1].innerHTML) { //if no match, then cards show back again
             cardArray[0].setAttribute("class", "back");
@@ -102,10 +102,11 @@ var memoryGameL03;
             cardArray[1].setAttribute("class", "back");
             cardArray[1].classList.remove("front");
             turnedCards = 0;
+            cardArray.length = 0;
         }
         else if (wonPairs == pairs) {
             alert("Congratulations!");
         }
-    } //end comparecards
+    } //end compareCards
 })(memoryGameL03 || (memoryGameL03 = {})); //end namespace
 //# sourceMappingURL=memoryScript.js.map

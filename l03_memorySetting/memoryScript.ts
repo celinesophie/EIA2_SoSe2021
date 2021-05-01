@@ -9,7 +9,7 @@ namespace memoryGameL03 {
     let startButton: HTMLButtonElement;
 
     let letters: string [] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y"];
-    
+    //array for comparing cards
     let cardArray: HTMLDivElement [] = [];
 
     // let start: number = new Date().getTime();
@@ -21,7 +21,7 @@ namespace memoryGameL03 {
         startButton.addEventListener("click", createCards);
     }
      
-    //cards are created an style is selected
+    //cards are created and style is set
     function createCards(_event: MouseEvent): void {
         //get formdata
         let formData: FormData = new FormData(document.forms[0]);
@@ -38,7 +38,7 @@ namespace memoryGameL03 {
             pairs = Number(pairNumber);
         }
 
-        //make settings div invisible
+        //make settings invisible
         
         // let settings: HTMLDivElement = <HTMLDivElement>document.querySelector("#settings");
         let gameBoard: HTMLDivElement = <HTMLDivElement>document.getElementById("gameBoard");
@@ -85,13 +85,12 @@ namespace memoryGameL03 {
 
     //cards are clicked
     function chooseCard(_event: MouseEvent): void {
-        console.log("chooseCard");
         let clickedCard: HTMLDivElement = <HTMLDivElement>_event.target;
         clickedCard.setAttribute("class", "front");
         clickedCard.classList.remove("back");
         turnedCards++;
         cardArray.push(clickedCard);
-        console.log(turnedCards);
+        // console.log(turnedCards);
         if (turnedCards == 2) {
             setTimeout(() => {
                 compareCards();
@@ -101,7 +100,7 @@ namespace memoryGameL03 {
 
     //cards are compared
     function compareCards(): void {
-        console.log("comparing");
+        // console.log("comparing");
         
         //if match, cards become invisible
         if (cardArray[0].innerHTML == cardArray[1].innerHTML) {
@@ -111,7 +110,7 @@ namespace memoryGameL03 {
            cardArray[1].classList.remove("front");
            turnedCards = 0;
            wonPairs++;
-           console.log(turnedCards);
+           cardArray.length = 0;     
 
        } else if (cardArray[0].innerHTML != cardArray[1].innerHTML) { //if no match, then cards show back again
         cardArray[0].setAttribute("class", "back");
@@ -119,10 +118,11 @@ namespace memoryGameL03 {
         cardArray[1].setAttribute("class", "back");
         cardArray[1].classList.remove("front");
         turnedCards = 0;
+        cardArray.length = 0;
        } else if (wonPairs == pairs) {
            alert("Congratulations!");
        }
-    }//end comparecards
+    }//end compareCards
 
 
 
