@@ -1,0 +1,62 @@
+body {
+    background-color: rgb(170, 169, 169);
+    
+}
+
+#gameBoard {
+    background-color: white;
+    width: 900px;
+    height: 600px;
+    position: absolute;
+}
+
+button {
+    background-color: #383a38;
+     border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: black;
+}
+
+.isHidden {
+    /* display: none; */
+    visibility: hidden;
+}
+
+.back {
+    font-size: 0px;
+    text-align: center;
+}
+
+.front {
+    font-size: 20px;
+    text-align: center;
+}
+
+/* game grid*/
+.game {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    grid-column-gap: 10px;
+    grid-row-gap: 7px;
+    justify-items: center ;
+    align-items: center;
+}
+
+#settings {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#settings p {
+    font-weight: bold;
+}

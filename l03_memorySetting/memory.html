@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="memoryStyle.css">
+    <script src="memoryScript.js"> </script> 
+</head>
+<body>
+    <header><h1>Memory Game</h1></header>
+
+    
+    <div id= "gameBoard">
+        <form action="index.html" method="post">
+        <div id = "settings">
+            <h2>Choose your Settings:</h2>
+               <p>Number of pairs:</p>
+                <input type="number" id="pairNumber" name="pairNumber" step="1" min="5" max="25">
+            <p>
+                small cards <input type="range" min="40" max="80" class="slider" id="cardSize" name="cardSize"> big cards
+            </p>
+                <p>Background color:</p>
+                <input type="color" name="backgroundColor" id="backgroundColor" value="#89bbbd">
+            <br>
+                <p>Card color:</p>
+                <input type="color" name="cardColor" id="cardColor" value="#ca97c8">
+            <br>
+                <p>Font color:</p>
+                <input type="color" name="fontColor" id="fontColor" value="#000000">
+            <br>
+                <p>Font:</p>
+                <input type="radio" id="Arial" name="font" value="Arial">
+                <label for="Arial">Arial</label><br>
+                <input type="radio" id="Times" name="font" value="Times New Roman">
+                <label for="Times New Roman">Times New Roman</label><br>
+                <input type="radio" id="Calibri" name="font" value="Calibri">
+                <label for="Calibri">Calibri</label> 
+            <br>
+        </form>
+        <br>
+                <button id = "startButton">Start</button>  
+            </div>
+    </div>
+    
+</body>
+</html>
