@@ -17,9 +17,7 @@ namespace L08Blumenwiese {
         drawMeadow();
         drawSun();
         drawMountains(posMountains, 75, 140, "grey", "white");
-        drawMountains(posMountains, 50, 100, "grey", "lightgrey");
-        drawClouds({ x: 500, y: 125 }, { x: 250, y: 75 });
-        drawClouds({ x: 100, y: 125 }, { x: 100, y: 75 });
+        drawMountains(posMountains, 50, 100, "grey", "lightgrey");       
         drawTrees(250, 250);
         drawTrees(800, 260);
 
@@ -41,6 +39,9 @@ namespace L08Blumenwiese {
             let randomY: number = Math.floor(Math.random() * 200);
             drawRose(randomX + 50, randomY + 270);         
         }
+
+        crc2.scale(0.5, 0.5);
+        drawCloud(1100, 200);
 
     }//end handleload
 
@@ -97,42 +98,33 @@ namespace L08Blumenwiese {
     }
 
     function drawSun(): void {
+        let gradient: CanvasGradient = crc2.createRadialGradient(150, 75, 5, 90, 60, 100);
+        gradient.addColorStop(0, "#fffc4f");
+        gradient.addColorStop(1, "#faf9ba");
         crc2.beginPath();
         crc2.arc(150, 75, 50, 0, 2 * Math.PI);
+        crc2.strokeStyle = "yellow";
         crc2.stroke();
-        crc2.fillStyle = "yellow";
+        crc2.fillStyle = gradient;
         crc2.fill(); 
         crc2.closePath();
     }
 
-    function drawClouds(_position: Vector, _size: Vector): void {
-
-        let nParticles: number = 20;
-        let radiusParticle: number = 50;
-        let particle: Path2D = new Path2D();
-        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
-        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.fillStyle = gradient;
-
-        for (let drawn: number = 0; drawn < nParticles; drawn++) {
-            crc2.save();
-            let x: number = (Math.random() - 0.5) * _size.x;
-            let y: number = - (Math.random() * _size.y);
-            crc2.translate(x, y);
-            crc2.fill(particle);
-            crc2.restore();
+    function drawCloud(_x: number, _y: number): void {
+        crc2.beginPath();
+        crc2.arc(_x, _y, 60, Math.PI * 0.5, Math.PI * 1.5);
+        crc2.arc(_x + 70, _y - 60, 70, Math.PI * 1, Math.PI * 1.85);
+        crc2.arc(_x + 152, _y - 45, 50, Math.PI * 1.37, Math.PI * 1.91);
+        crc2.arc(_x + 200, _y, 60, Math.PI * 1.5, Math.PI * 0.5);
+        crc2.moveTo(_x + 200, _y + 60);
+        crc2.lineTo(_x, _y + 60);
+        crc2.strokeStyle = "white";
+        crc2.stroke();
+        crc2.fillStyle = "white";
+        crc2.fill();
         }
-        crc2.restore();
-    }
-
-    function drawTrees(_x: number, _y: number): void {
-        console.log("trees");
+      
+    function drawTrees(_x: number, _y: number): void { 
         //Stamm
         crc2.beginPath();
         crc2.fillStyle = "brown";
@@ -269,14 +261,6 @@ namespace L08Blumenwiese {
         crc2.stroke();
         crc2.fill();
     }
-
-   
-  
-
-
-
-
-
 
 }//end namespace
         

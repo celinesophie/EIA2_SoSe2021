@@ -12,8 +12,6 @@ var L08Blumenwiese;
         drawSun();
         drawMountains(posMountains, 75, 140, "grey", "white");
         drawMountains(posMountains, 50, 100, "grey", "lightgrey");
-        drawClouds({ x: 500, y: 125 }, { x: 250, y: 75 });
-        drawClouds({ x: 100, y: 125 }, { x: 100, y: 75 });
         drawTrees(250, 250);
         drawTrees(800, 260);
         //Tulips
@@ -34,6 +32,8 @@ var L08Blumenwiese;
             let randomY = Math.floor(Math.random() * 200);
             drawRose(randomX + 50, randomY + 270);
         }
+        crc2.scale(0.5, 0.5);
+        drawCloud(1100, 200);
     } //end handleload
     function drawSky() {
         let gradient = crc2.createLinearGradient(450, 0, 450, 500);
@@ -75,33 +75,29 @@ var L08Blumenwiese;
         crc2.restore();
     }
     function drawSun() {
+        let gradient = crc2.createRadialGradient(150, 75, 5, 90, 60, 100);
+        gradient.addColorStop(0, "#fffc4f");
+        gradient.addColorStop(1, "#faf9ba");
         crc2.beginPath();
         crc2.arc(150, 75, 50, 0, 2 * Math.PI);
+        crc2.strokeStyle = "yellow";
         crc2.stroke();
-        crc2.fillStyle = "yellow";
+        crc2.fillStyle = gradient;
         crc2.fill();
         crc2.closePath();
     }
-    function drawClouds(_position, _size) {
-        let nParticles = 20;
-        let radiusParticle = 50;
-        let particle = new Path2D();
-        let gradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
-        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.fillStyle = gradient;
-        for (let drawn = 0; drawn < nParticles; drawn++) {
-            crc2.save();
-            let x = (Math.random() - 0.5) * _size.x;
-            let y = -(Math.random() * _size.y);
-            crc2.translate(x, y);
-            crc2.fill(particle);
-            crc2.restore();
-        }
-        crc2.restore();
+    function drawCloud(_x, _y) {
+        crc2.beginPath();
+        crc2.arc(_x, _y, 60, Math.PI * 0.5, Math.PI * 1.5);
+        crc2.arc(_x + 70, _y - 60, 70, Math.PI * 1, Math.PI * 1.85);
+        crc2.arc(_x + 152, _y - 45, 50, Math.PI * 1.37, Math.PI * 1.91);
+        crc2.arc(_x + 200, _y, 60, Math.PI * 1.5, Math.PI * 0.5);
+        crc2.moveTo(_x + 200, _y + 60);
+        crc2.lineTo(_x, _y + 60);
+        crc2.strokeStyle = "white";
+        crc2.stroke();
+        crc2.fillStyle = "white";
+        crc2.fill();
     }
     function drawTrees(_x, _y) {
         console.log("trees");

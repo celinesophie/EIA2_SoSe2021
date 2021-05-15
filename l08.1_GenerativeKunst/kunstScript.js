@@ -39,6 +39,7 @@ var l08Kunst;
                 circle();
                 crc2.translate(+39, -15);
             }
+            //Diese Weise wurde im Praktikum mit Lisa W. und Jirka erarbeitet:
             //hsl colors for circles
             let h = Math.floor(Math.random() * (329 - 186 + 1)) + 166; //farbe, bläulich
             let s = Math.floor(Math.random() * 100); //saturation
