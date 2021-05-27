@@ -100,7 +100,6 @@ var L08Blumenwiese;
         crc2.fill();
     }
     function drawTrees(_x, _y) {
-        console.log("trees");
         //Stamm
         crc2.beginPath();
         crc2.fillStyle = "brown";
