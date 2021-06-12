@@ -1,6 +1,6 @@
 "use strict";
-var L09Blumenwiese;
-(function (L09Blumenwiese) {
+var L10Blumenwiese;
+(function (L10Blumenwiese) {
     class Vector {
         x;
         y;
@@ -26,7 +26,10 @@ var L09Blumenwiese;
             this.set(Math.cos(direction), Math.sin(direction));
             this.scale(length);
         }
+        copy() {
+            return new Vector(this.x, this.y);
+        }
     }
-    L09Blumenwiese.Vector = Vector;
-})(L09Blumenwiese || (L09Blumenwiese = {})); //namespace end
+    L10Blumenwiese.Vector = Vector;
+})(L10Blumenwiese || (L10Blumenwiese = {})); //namespace end
 //# sourceMappingURL=vector.js.map

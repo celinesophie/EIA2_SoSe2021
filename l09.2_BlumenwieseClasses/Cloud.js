@@ -2,6 +2,9 @@
 var L09Blumenwiese;
 (function (L09Blumenwiese) {
     class Cloud {
+        position;
+        velocity;
+        size;
         constructor(_size, _position) {
             // console.log("cloud constructor");
             if (_position) //kein Vektor angegeben
