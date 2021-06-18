@@ -1,6 +1,6 @@
-namespace L10Blumenwiese {
+namespace L11Blumenwiese {
 
-    export class Cloud extends Moveables {
+    export class Cloud extends Moveable {
 
     constructor(_size: number, _position?: Vector) {
             // console.log("cloud constructor");

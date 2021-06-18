@@ -7,7 +7,7 @@ var L10Blumenwiese;
         // size: number;
         constructor(_size, _position) {
             // console.log("bee constructor");
-            super(_position);
+            super(_size, _position);
             if (_position)
                 this.position = _position;
             else

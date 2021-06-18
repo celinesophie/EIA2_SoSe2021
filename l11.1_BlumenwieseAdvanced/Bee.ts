@@ -1,9 +1,6 @@
-namespace L10Blumenwiese {
+namespace L11Blumenwiese {
 
-    export class Bee extends Moveables {
-        // position: Vector;
-        // velocity: Vector;
-        // size: number;
+    export class Bee extends Moveable {
 
         constructor(_size: number, _position?: Vector) {
             // console.log("bee constructor");

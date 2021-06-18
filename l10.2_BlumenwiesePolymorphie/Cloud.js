@@ -4,7 +4,7 @@ var L10Blumenwiese;
     class Cloud extends L10Blumenwiese.Moveables {
         constructor(_size, _position) {
             // console.log("cloud constructor");
-            super(_position);
+            super(_size, _position);
             if (_position)
                 this.position = _position;
             else
